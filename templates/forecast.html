@@ -6,12 +6,15 @@
     <title>Forecast</title>
 </head>
 <body>
-    <form methods="post" action="get_forecast">
-        Город: <input type="text" name="city"><br>
-        <input type="submit" value="Узнать прокноз погоды"><br>
+    <form method="POST" action="{{ url_for('get_forecast') }}">
+     Город: <input type="text"
+                  name="city"><br>
+    <input type="submit" value="Узнать прогноз погоды">
 
-        <p>{{ forecast }}</p>
-    </form>
-    <a href="index.html">Перейти на главную</a>
+    <p>{{ forecast }}</p>
+</form>
+<a href="{{ url_for('index') }}">
+        <input type="submit" value="Вернуться в главное меню">
+</a>
 </body>
 </html>
