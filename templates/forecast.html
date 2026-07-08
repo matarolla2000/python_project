@@ -19,6 +19,13 @@
     <p>{{ forecast }}</p>
     {% endif %}
 </form>
+
+{% if error > 0 %}
+<form>
+    <p>Ошибка. Тут можно вставить поле с фидбэком</p>
+</form>
+{% endif %}
+
 <a href="{{ url_for('index') }}">
         <input type="submit" value="Вернуться в главное меню">
 </a>
