@@ -6,8 +6,12 @@
     <title>Forecast</title>
 </head>
 <body>
-    <h1>Погода в Москве: {{ Moscow }}</h1><br>
-    <h1>Погода в Казани: {{ Kazan }}</h1><br>
-    <h1>Погода в Екатеринбурге: {{ Ekaterinburg }}</h1><br>
+    <form methods="post" action="get_forecast">
+        Город: <input type="text" name="city"><br>
+        <input type="submit" value="Узнать прокноз погоды"><br>
+
+        <p>{{ forecast }}</p>
+    </form>
+    <a href="index.html">Перейти на главную</a>
 </body>
 </html>

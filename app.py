@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
@@ -9,12 +9,18 @@ app = Flask(__name__)
 def main():
     return render_template("index.html")
 
-@app.route("/forecast", methods=["post"])
+@app.route("/forecast", methods=['post'])
 def forecast():
-    return render_template("forecast.html")
+    return render_template("forecast.html", forecast="")
 
-@app.route("/contact")
+@app.route("/get_forecast", methods=['post'])
+def get_forecast():
+    city = request.form['city']
+    forecast = f"Прогноз погоды для {city}"
+    return render_template("forecast.html", forecast=forecast)
+
+@app.route("/contact", methods=['post'])
 def contact():
-    pass
+    return render_template("contact.html")
 
 app.run(debug=True)
