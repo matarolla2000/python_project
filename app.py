@@ -10,7 +10,7 @@ def index():
 
 @app.route("/forecast", methods=['post'])
 def forecast():
-    return render_template("forecast.html", forecast="")
+    return render_template("forecast.html", forecast="", temperature=15)
 
 @app.route("/get_forecast", methods=['post'])
 def get_forecast():
@@ -20,9 +20,10 @@ def get_forecast():
     response = requests.get(url)
     data = response.json()
     if response.status_code != 200:
-        return render_template("forecast.html", forecast="Такого города не найдено.")
-    forecast = f"Прогноз погоды для {city}: \n Температура: {data['current']['temp_c']}°C"
-    return render_template("forecast.html", forecast=forecast)
+        return render_template("forecast.html", forecast="Такого города не найдено.", temperature=15)
+    temperature = data['current']['temp_c']
+    forecast = f"Прогноз погоды для {city}: \n Температура: {temperature}°C"
+    return render_template("forecast.html", forecast=forecast, temperature=temperature)
 
 @app.route("/contact", methods=['post'])
 def contact():
